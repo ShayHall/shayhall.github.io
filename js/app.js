@@ -1,8 +1,3 @@
-async function navigateTo(url) {
-  history.pushState(null, null, url);
-  await router();
-}
-
 async function router() {
   const routes = {
     "/": "/pages/home.html",
@@ -13,11 +8,28 @@ async function router() {
     "/contact": "/pages/contact.html"
   };
 
+  // 1. Check if we were redirected from the 404 page
+  const urlParams = new URLSearchParams(window.location.search);
+  const redirectedPath = urlParams.get('p');
+
+  if (redirectedPath) {
+    // Clean up the URL in the browser bar
+    window.history.replaceState(null, null, '/' + redirectedPath);
+  }
+
+  // 2. Determine the path to render
   const path = window.location.pathname;
   const route = routes[path] || routes["/"];
 
-  const html = await fetch(route).then(r => r.text());
-  document.getElementById("app").innerHTML = html;
+  try {
+    const response = await fetch(route);
+    if (!response.ok) throw new Error("Page not found");
+    const html = await response.text();
+    document.getElementById("app").innerHTML = html;
+  } catch (error) {
+    document.getElementById("app").innerHTML = "<h1>404 - Page Not Found</h1>";
+  }
+}
 
   // -------------------------------
   // 🚀 RE-INITIALIZE INTERACTIONS
