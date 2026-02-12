@@ -175,6 +175,10 @@ a {
   padding-bottom: 70vh;
 }
 
+.about-header span {
+  color: var(--color-accent-coral);
+}
+
 .hero-home {
   padding-bottom: var(--space-15);
 }
