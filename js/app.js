@@ -4,7 +4,6 @@
 
 const routes = {
   "/": "/pages/home.html",
-  "/home": "/pages/home.html",
   "/case-studies": "/pages/case-studies.html",
   "/about": "/pages/about.html",
   "/blog": "/pages/blog.html",
