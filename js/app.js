@@ -8,26 +8,32 @@ async function router() {
     "/contact": "/pages/contact.html"
   };
 
-  // 1. Check if we were redirected from the 404 page
+  // 1. Capture the redirect path from the URL (?p=about)
   const urlParams = new URLSearchParams(window.location.search);
-  const redirectedPath = urlParams.get('p');
+  let path = urlParams.get('p');
 
-  if (redirectedPath) {
-    // Clean up the URL in the browser bar
-    window.history.replaceState(null, null, '/' + redirectedPath);
+  if (path) {
+    // Convert 'about' to '/about'
+    path = '/' + path;
+    // This removes the '?p=...' and restores the clean URL in the browser bar
+    window.history.replaceState(null, null, path);
+  } else {
+    // If no redirect param, just use the current pathname
+    path = window.location.pathname;
   }
 
-  // 2. Determine the path to render
-  const path = window.location.pathname;
+  // 2. Fallback to home if the path isn't in our routes
   const route = routes[path] || routes["/"];
 
   try {
     const response = await fetch(route);
-    if (!response.ok) throw new Error("Page not found");
     const html = await response.text();
     document.getElementById("app").innerHTML = html;
-  } catch (error) {
-    document.getElementById("app").innerHTML = "<h1>404 - Page Not Found</h1>";
+  } catch (err) {
+    console.error("Routing error:", err);
+    // Optional: Load a dedicated error page
+    const errorHtml = await fetch(routes["/"]).then(r => r.text());
+    document.getElementById("app").innerHTML = errorHtml;
   }
 }
 
