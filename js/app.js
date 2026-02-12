@@ -1,3 +1,11 @@
+// This function handles the clicking of links
+async function navigateTo(url) {
+  // Update the URL in the browser bar
+  history.pushState(null, null, url);
+  // Run the router to swap the content
+  await router();
+}
+
 async function router() {
   const routes = {
     "/": "/pages/home.html",
@@ -8,34 +16,49 @@ async function router() {
     "/contact": "/pages/contact.html"
   };
 
-  // 1. Capture the redirect path from the URL (?p=about)
+  // 1. Check if we just arrived via the 404.html redirect (?p=...)
   const urlParams = new URLSearchParams(window.location.search);
   let path = urlParams.get('p');
 
   if (path) {
-    // Convert 'about' to '/about'
+    // If we have a redirect param, clean the URL (remove the ?p=)
     path = '/' + path;
-    // This removes the '?p=...' and restores the clean URL in the browser bar
     window.history.replaceState(null, null, path);
   } else {
-    // If no redirect param, just use the current pathname
+    // Otherwise, just use the normal path
     path = window.location.pathname;
   }
 
-  // 2. Fallback to home if the path isn't in our routes
+  // 2. Resolve the route
   const route = routes[path] || routes["/"];
 
+  // 3. Fetch and inject the HTML
   try {
     const response = await fetch(route);
     const html = await response.text();
     document.getElementById("app").innerHTML = html;
-  } catch (err) {
-    console.error("Routing error:", err);
-    // Optional: Load a dedicated error page
-    const errorHtml = await fetch(routes["/"]).then(r => r.text());
-    document.getElementById("app").innerHTML = errorHtml;
+  } catch (error) {
+    console.error("Fetch error:", error);
   }
 }
+
+// 4. Handle back/forward browser buttons
+window.addEventListener("popstate", router);
+
+// 5. Initial load
+document.addEventListener("DOMContentLoaded", () => {
+  // This listener catches all clicks on the page
+  document.body.addEventListener("click", e => {
+    // If the clicked element is a link with a 'data-link' attribute
+    if (e.target.matches("[data-link]")) {
+      e.preventDefault();
+      navigateTo(e.target.href);
+    }
+  });
+
+  router();
+});
+
 
   // -------------------------------
   // 🚀 RE-INITIALIZE INTERACTIONS
