@@ -1,4 +1,5 @@
 /* main.js - simple, dependency-free interactions */
+
 /* Utilities */
 const $ = sel => document.querySelector(sel);
 const $$ = sel => Array.from(document.querySelectorAll(sel));
@@ -6,32 +7,25 @@ const $$ = sel => Array.from(document.querySelectorAll(sel));
 /* Modal root */
 const modalRoot = document.getElementById('modal-root');
 
-
 /* Close modal */
 function closeModal(){
   if(!modalRoot) return;
   modalRoot.classList.remove('open');
   modalRoot.setAttribute('aria-hidden','true');
 
-  // Remove dynamically added modal content
   const modal = modalRoot.querySelector('.modal');
   if(modal) modal.remove();
-
-  // Return focus to the element that opened the modal (if possible, though this is tricky in a full SPA)
 }
 
-/* Open modal with URL content (fetch HTML fragment) */
+/* Open modal with URL content */
 async function openModal(url){
   if(!modalRoot) return;
   modalRoot.classList.add('open');
   modalRoot.setAttribute('aria-hidden','false');
 
-  // Create container
   const modal = document.createElement('div');
   modal.className = 'modal';
   modal.tabIndex = -1;
-
-  // Loading UI
   modal.innerHTML = `<div class="loading">Loading…</div>`;
   modalRoot.appendChild(modal);
 
@@ -40,87 +34,42 @@ async function openModal(url){
     if(!res.ok) throw new Error('Failed to load');
     const html = await res.text();
 
-    // Insert content into modal (simple)
     modal.innerHTML = html;
 
-    // add close button
     const closeBtn = document.createElement('button');
     closeBtn.className = 'modal-close';
     closeBtn.innerText = '✕';
     closeBtn.addEventListener('click', closeModal);
     
-    // Find the primary content area (e.g., the first section or article) and prepend the close button
     const contentArea = modal.querySelector('article, section');
     if(contentArea) {
-      contentArea.style.position = 'relative'; // Ensure button is positioned correctly relative to content
+      contentArea.style.position = 'relative';
       contentArea.prepend(closeBtn);
     } else {
       modal.prepend(closeBtn);
     }
-
   } catch(error){
     console.error('Modal fetch failed:', error);
-    modal.innerHTML = `<div class="error">Error loading content. Please try again later.</div>`;
-    
-    // Still add close button for error case
-    const closeBtn = document.createElement('button');
-    closeBtn.className = 'modal-close';
-    closeBtn.innerText = '✕';
-    closeBtn.addEventListener('click', closeModal);
-    modal.appendChild(closeBtn);
+    modal.innerHTML = `<div class="error">Error loading content.</div>`;
   }
 }
 
 /* Attaches click handler to tiles */
 function setupTiles(){
-  // $$('.tile').forEach(tile => {
-  //   const clone = tile.cloneNode(true);
-  //   tile.parentNode.replaceChild(clone, tile);
-  // });
-  
-  // Re-select and attach new listeners
   $$('.tile').forEach(tile => {
     tile.addEventListener('click', function(e){
-      // 1. Check for data-case (used for case studies)
-      let url = this.getAttribute('data-case');
-      
-      // 2. Check for data-post (used for blog posts)
-      if(!url) {
-        url = this.getAttribute('data-post');
-      }
-      
-      // If either attribute is present, open the modal
+      let url = this.getAttribute('data-case') || this.getAttribute('data-post');
       if(url){
         e.preventDefault();
         openModal(url);
-      } else {
-        // Fallback: if no data-case/data-post, check for an internal link
-        const link = this.querySelector('a');
-        if (link && !link.matches('[data-link]') && !link.getAttribute('target')) {
-             // If it's a regular anchor, do nothing and let the browser handle it.
-        }
       }
     });
 
-    // Handle keyboard interaction (Enter key)
     tile.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-            this.click();
-        }
+        if (e.key === 'Enter') this.click();
     });
   });
 }
-
-// Add the modal close behavior to the modal root itself
-if(modalRoot) {
-  modalRoot.addEventListener('click', (e)=>{
-    // Only close if the click is directly on the overlay (modalRoot)
-    if(e.target === modalRoot) {
-      closeModal();
-    }
-  });
-}
-
 
 /* Intersection observer for fade-in on scroll */
 function setupScrollAnimations(){
@@ -133,11 +82,36 @@ function setupScrollAnimations(){
   $$('.panel[data-animate], [data-animate]').forEach(el=>obs.observe(el));
 }
 
-/* Keyboard: ESC closes modal */
-document.addEventListener('keydown', (e)=>{
+/* ScrollSpy for secondary navigation */
+let scrollSpyObserver;
+function initScrollSpy() {
+  if (scrollSpyObserver) scrollSpyObserver.disconnect();
+
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".secondary-nav a");
+
+  if (sections.length === 0) return;
+
+  scrollSpyObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => link.classList.remove("active"));
+        const activeLink = document.querySelector(`.secondary-nav a[href="#${entry.target.id}"]`);
+        if (activeLink) activeLink.classList.add("active");
+      }
+    });
+  }, { threshold: 0.5 });
+
+  sections.forEach(section => scrollSpyObserver.observe(section));
+}
+
+/* Global Listeners */
+if(modalRoot) {
+  modalRoot.addEventListener('click', (e) => {
+    if(e.target === modalRoot) closeModal();
+  });
+}
+
+document.addEventListener('keydown', (e) => {
   if(e.key === 'Escape') closeModal();
 });
-
-/* init */
-// Removed DOMContentLoaded listener here since app.js handles the initialization after every route change.
-// The functions are now called directly from app.js after content is loaded.
