@@ -79,6 +79,10 @@ a {
   text-decoration: none;
 }
 
+ul, p, blockquote {
+  max-width: 750px;
+}
+
 /* skip link */
 .skip-link {position:absolute;left:-9999px;top:auto;overflow:hidden}
 .skip-link:focus {left:16px;top:16px;z-index:9999;background:#fff;color:#000;padding:8px;border-radius:6px}
@@ -99,13 +103,19 @@ a {
   align-items:start;
 }
 
+
+
 /* Primary nav (left) */
 .primary-nav {
   position:fixed;
-  left:16px; top: 16px;
+  left:0; top: 0;
+  height: 100vh;
+  /* left: 16px; top: 16px; */
+  padding: 16px;
   width:188px;
   z-index:var(--z-nav);
   font-family:var(--font-heading);
+  /* background: linear-gradient(to right,var(--color-bg) 70%, var(--color-mid-gray)); */
 }
 /* .primary-nav .brand {
   color:var(--color-accent-teal);
@@ -404,7 +414,6 @@ p.timeline-time {
   border-left:3px solid var(--color-mid-gray);
   padding-left:12px;color:var(--color-text-secondary);
   margin: 24px 0;
-  max-width: 50vw;
 }
 
 .testimonials span {
@@ -758,8 +767,6 @@ p.timeline-time {
   max-width: 140%;
 }
 
-/* Accessibility focus */
-a:focus, button:focus, .tile:focus {outline:3px solid rgba(20,184,166,0.14);outline-offset:2px}
 
 .img-flex-container {
   display: flex;
@@ -778,3 +785,7 @@ a:focus, button:focus, .tile:focus {outline:3px solid rgba(20,184,166,0.14);outl
   object-fit: cover; /* Scales the image to fill the container and crops excess */
   object-position: left; /* Centers the image within the container by default */
 }
+
+
+/* Accessibility focus */
+a:focus, button:focus, .tile:focus {outline:3px solid rgba(20,184,166,0.14);outline-offset:2px}
