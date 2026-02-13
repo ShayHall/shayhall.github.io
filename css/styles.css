@@ -139,6 +139,9 @@ ul, p, blockquote {
   /* background-image: linear-gradient(-45deg, var(--color-accent-teal), transparent); */
 }
 
+.photo-link {
+  color: var(--color-accent-coral)
+}
 /* Secondary nav (right) */
 .secondary-nav {
   align-self:start; 
