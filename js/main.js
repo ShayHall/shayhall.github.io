@@ -20,10 +20,6 @@ function closeModal(){
   // Return focus to the element that opened the modal (if possible, though this is tricky in a full SPA)
 }
 
-
-
-
-
 /* Open modal with URL content (fetch HTML fragment) */
 async function openModal(url){
   if(!modalRoot) return;
@@ -76,12 +72,7 @@ async function openModal(url){
 }
 
 /* Attaches click handler to tiles */
-function setupTiles(){
-  // $$('.tile').forEach(tile => {
-  //   const clone = tile.cloneNode(true);
-  //   tile.parentNode.replaceChild(clone, tile);
-  // });
-  
+function setupTiles(){  
   // Re-select and attach new listeners
   $$('.tile').forEach(tile => {
     tile.addEventListener('click', function(e){
@@ -162,7 +153,10 @@ function tabAction() {
 
 if ('navigation' in window) {
   window.navigation.addEventListener('navigate', (event) => {
+
     handleLinkClick();
+
+
   });
 }
 
@@ -170,7 +164,7 @@ const currentPath = window.location.pathname;
 
 function handleLinkClick() {
 
-if (currentPath === "/") {
+
   setTimeout(() => {
 
     function tabNav(){
@@ -183,12 +177,15 @@ if (currentPath === "/") {
 
     tabNav();
   }, 1000); // end of setTimeout
-} //end of if statement looking for homepage
 };
 
 handleLinkClick()
 
-
+function scrollTo(hash) {
+  if (hash = "/") {
+  location.hash = "#" + hash; // This changes the URL hash and triggers the scroll
+  }
+}
 
 
 
