@@ -20,6 +20,10 @@ function closeModal(){
   // Return focus to the element that opened the modal (if possible, though this is tricky in a full SPA)
 }
 
+
+
+
+
 /* Open modal with URL content (fetch HTML fragment) */
 async function openModal(url){
   if(!modalRoot) return;
@@ -138,6 +142,49 @@ document.addEventListener('keydown', (e)=>{
   if(e.key === 'Escape') closeModal();
 });
 
-/* init */
-// Removed DOMContentLoaded listener here since app.js handles the initialization after every route change.
-// The functions are now called directly from app.js after content is loaded.
+
+/* tabs */
+const currentPath = window.location.pathname;
+
+if (currentPath === "/") {
+  setTimeout(() => {
+
+    function tabNav(){
+      const nav_items = document.getElementsByClassName("tab-nav-item");
+
+      for(let i=0; i < nav_items.length; i++) {
+        nav_items[i].addEventListener("click", function() {
+          const id=this.getAttribute("data-id");
+          const active_nav = document.getElementsByClassName("tab-nav-item_active");
+          while (active_nav.length > 0) {
+            active_nav[0].classList.remove("tab-nav-item_active");
+          };
+
+          this.classList.add("tab-nav-item_active");
+          
+          const active_content = document.getElementsByClassName("tab-content-item_active");
+          while (active_content.length > 0) {
+            active_content[0].classList.remove("tab-content-item_active");
+          }
+          document.getElementById(id).classList.add("tab-content-item_active");
+          
+
+        });// end of click event listener
+      } // end of for loop
+    };// end of tabNav function
+
+
+    tabNav();
+  }, 1000); // end of setTimeout
+} //end of if statement looking for homepage
+
+    
+      
+        
+          
+
+          
+        
+
+
+

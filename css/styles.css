@@ -115,21 +115,13 @@ ul, p, blockquote {
   width:188px;
   z-index:var(--z-nav);
   font-family:var(--font-heading);
-  /* background: linear-gradient(to right,var(--color-bg) 70%, var(--color-mid-gray)); */
+ 
 }
-/* .primary-nav .brand {
-  color:var(--color-accent-teal);
-  text-decoration:none;
-  font-weight:var(--heading-weight-high);
-  display:block;
-  margin-bottom:var(--space-4);
-  letter-spacing:0.06em;
-} */
 
 .primary-nav .nav-list {list-style:none;padding:0;margin:0;display:block}
 .primary-nav .nav-list li {margin-bottom:12px}
 
-.primary-nav .nav-list a {color:var(--color-text-secondary);text-decoration:none;font-family:var(--font-body);font-size:14px}
+.primary-nav .nav-list a {color:var(--color-text-primary);text-decoration:none;font-family:var(--font-body);font-size:14px}
 .primary-nav .nav-list a:hover, .primary-nav .nav-list a:focus {color:var(--color-accent-teal)}
 
 .nav-logo {
@@ -173,6 +165,8 @@ ul, p, blockquote {
   padding:0
 }
 /* when using explicit classes above in HTML, kept consistent*/
+
+
 
 /* utility panels */
 .panel {
@@ -354,6 +348,48 @@ ul, p, blockquote {
   background-color: var(--color-text-secondary)
 }
 
+/* tabs */
+
+.tabs {
+
+}
+.tab-nav {
+  display: flex;
+  margin-bottom: var(--space-6);
+}
+
+.tab-nav-item {
+  padding: 1rem;
+  border: 1px solid var(--color-accent-teal);
+  cursor:pointer;
+}
+
+.tab-nav-item:last-child {
+  border-right-color: var(--color-accent-teal);
+}
+
+
+
+.tab-content {
+
+}
+
+.tab-content-item {
+  display: none;
+}
+
+.tab-nav-item_active {
+  background: var(--color-accent-teal);
+  color: var(--color-bg);
+  font-weight: 600;
+  cursor: default;
+}
+
+.tab-content-item_active {
+  display: block;
+}
+
+
 /* timeline */
 .timeline {position:relative}
 .timeline-wrap {position:relative;padding-left:48px}
@@ -365,11 +401,16 @@ ul, p, blockquote {
 }
 .timeline-item {display:flex;gap:16px;padding:var(--space-3) 0;align-items:flex-start}
 .timeline-item .dot {
-  width:14px;height:14px;border-radius:50%;
-  background:var(--color-accent-teal);box-shadow:0 0 18px rgba(20,184,166,0.55);
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:var(--color-accent-teal);
+  box-shadow:0 0 18px rgba(20,184,166,0.55);
   margin-left:-27px;flex:0 0 14px;
   z-index: 100;
 }
+
+
 /* .timeline-card {background:rgba(255,255,255,0.02);padding:0;} */
 
 .timeline-heading {
@@ -388,7 +429,7 @@ p.timeline-time {
   margin: 24px 0;
   border: 1px solid var(--color-accent-coral);
   /* background: var(--color-bg); */
-  position:relative
+  position:relative;
 }
 
 .teaching-card::before {
