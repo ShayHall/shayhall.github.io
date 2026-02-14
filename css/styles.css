@@ -115,7 +115,7 @@ ul, p, blockquote {
   width:188px;
   z-index:var(--z-nav);
   font-family:var(--font-heading);
- 
+ color: var(--color-text-primary);
 }
 
 .primary-nav .nav-list {list-style:none;padding:0;margin:0;display:block}
