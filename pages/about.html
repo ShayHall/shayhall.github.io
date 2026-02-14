@@ -1,12 +1,3 @@
-<!-- Secondary nav column (right) -->
-<aside id="home-sec-nav" class="secondary-nav col-1-right" aria-label="Secondary">
-  <ul class="nav-list right">
-    <li><a href="#about">About me</a></li>
-    <li><a href="#philosophy">Philosophy</a></li>
-    <li><a href="#skills">Skills</a></li>
-  </ul>
-</aside>
-
 <!-- HERO -->
 <section class="hero" id="about">
   <h1 class="hero-title">ABOUT <span>+</span> ME</h1>
@@ -14,78 +5,102 @@
     <div class="sqr-img-frame">
       <img src="assets/images/shay-workshop-3.jpg" alt="shay running a workshop like a boss" class="square-image">
     </div>
-      <div class="sqr-img-frame">
+    <div class="sqr-img-frame">
       <img src="assets/images/shay-workshop-1.jpg" alt="shay running a workshop like a boss" class="square-image">
     </div>
-      <div class="sqr-img-frame">
+    <div class="sqr-img-frame">
       <img src="assets/images/shay-workshop-5.jpg" alt="shay running a workshop like a boss" class="square-image">
     </div>
-      <div class="sqr-img-frame">
+    <div class="sqr-img-frame">
       <img src="assets/images/shay-workshop-4.jpg" alt="shay running a workshop like a boss" class="square-image">
     </div>
   </div>
-
   <p class="hero-description">I specialize in aligning teams around a clear vision, scalable processes, and human-centered product outcomes. My work centers on helping organizations reduce friction, strengthen cross-functional collaboration, and empower teams of designers, product managers, and engineers to deliver consistent, high-quality product experiences at scale.</p>
   <p class="hero-description">When I'm not leading highly effective and productive teams I enjoy traveling, photography (see a few examples <a href="/photos" class="photo-link" id="photos-nav" data-link>here</a>), cooking (and eating!), writing, and board games. </p>
   <div class="hero-cta-row">
     <a class="btn primary" href="../assets/Resume-SHall.pdf" download>Download resume</a>
     <a class="btn ghost" href="/contact" data-link>Contact me</a>
   </div>
-</section>
+</section> <!-- END OF HERO -->
 
-<!-- Projects overview -->
-<section class="about-panel">
-  <div class="">
-    <h3 class="about-header"><span>+</span> Systemic enablement</h3>
-    <p>My approach begins at the operational level. I build the conditions that allow design to thrive by establishing repeatable processes, design ops foundations, and cross-functional clarity. I help teams reduce operational friction, streamline workflows between design and development, and create environments where cross-functional product teams can move with confidence and alignment.</p>
-  </div>
+<!-- TAB NAV -->
+<section class="tabs panel timeline">
+  <div class="tab-nav">
+    <div class="tab-nav-item tab-nav-item_active" aria-role="button" data-id="about-me-tab">ABOUT ME</div>
+    <div class="tab-nav-item" aria-role="button" data-id="philosophy-tab">PHILOSOPHY</div>
+    <div class="tab-nav-item" aria-role="button" data-id="skills-tab">SKILLS</div>
+  </div> <!-- END OF TAB NAV -->
 
-  <div class="">
-    <h3 class="about-header"><span>+</span> Strategic clarity + vision</h3>
-    <p>I bring strategic clarity to complex product spaces. Whether shaping product roadmaps, defining experience frameworks, or facilitating alignment across disciplines, I focus on connecting long-term organizational goals to day-to-day execution. My leadership style centers on transparency, communication, and empowering teams with a shared direction and purpose.</p>
-  </div>
+  <div class="tab-content">
+    <div class="tab-content-item panel narrow-panel tab-content-item_active" id="about-me-tab">
+      <h2 class="section-title">ABOUT ME</h2>
+      <section class="about-panel">
+        <div class="">
+          <h3 class="about-header"><span>+</span> Systemic enablement</h3>
+          <p>My approach begins at the operational level. I build the conditions that allow design to thrive by establishing repeatable processes, design ops foundations, and cross-functional clarity. I help teams reduce operational friction, streamline workflows between design and development, and create environments where cross-functional product teams can move with confidence and alignment.</p>
+        </div>
 
-  <div class="">
-    <h3 class="about-header"><span>+</span> Human + Machine harmony</h3>
-    <p>With roots in both UX and technical domains, I bridge the gap between engineering logic and human experience. I help organizations create products where systems work cleanly behind the scenes and users feel supported, understood, and empowered. This balance is at the core of how I define product quality.</p>
-  </div>
+        <div class="">
+          <h3 class="about-header"><span>+</span> Strategic clarity + vision</h3>
+          <p>I bring strategic clarity to complex product spaces. Whether shaping product roadmaps, defining experience frameworks, or facilitating alignment across disciplines, I focus on connecting long-term organizational goals to day-to-day execution. My leadership style centers on transparency, communication, and empowering teams with a shared direction and purpose.</p>
+        </div>
 
-  <div class="">
-    <h3 class="about-header"><span>+</span> Process optimization for quality</h3>
-    <p>High-quality products emerge from high-quality processes. I focus on designing the connective tissue between teams, ensuring handoffs are seamless, decisions are thoughtful, and collaboration is natural. I help organizations set up processes that reduce rework, accelerate delivery, and consistently produce better outcomes.</p>
-  </div>
-</section>
+        <div class="">
+          <h3 class="about-header"><span>+</span> Human + Machine harmony</h3>
+          <p>With roots in both UX and technical domains, I bridge the gap between engineering logic and human experience. I help organizations create products where systems work cleanly behind the scenes and users feel supported, understood, and empowered. This balance is at the core of how I define product quality.</p>
+        </div>
 
-<section class="about-panel" id="philosophy">
-  <h2 class="section-title">PHILOSOPHY</h2>
-  <div class="philo-section">
-    <h4 class="">Mission</h4>
-    <p>Empower others to do their jobs well and enjoy doing their jobs</p>
-    <h4 class="">Vision</h4>
-    <p><span>Strategic:</span> Form vision, strategy, roadmap and culture</p>  
-    <p><span>Tactical:</span> Improve communication, inspire, encourage, and participate in additive collaboration</p>
-    <h4 class="">Values</h4>
-    <p>Connecting <span>+</span> Strategic <span>+</span> Determined <span>+</span> Collaborative <span>+</span> Empowering</p>
-  </div>
-</section>
+        <div class="">
+          <h3 class="about-header"><span>+</span> Process optimization for quality</h3>
+          <p>High-quality products emerge from high-quality processes. I focus on designing the connective tissue between teams, ensuring handoffs are seamless, decisions are thoughtful, and collaboration is natural. I help organizations set up processes that reduce rework, accelerate delivery, and consistently produce better outcomes.</p>
+        </div>
+      </section>
+    </div> <!-- END OF ABOUT ME TAB -->
+    <div class="tab-content-item panel narrow-panel" id="philosophy-tab">
+      <h2 class="section-title">PHILOSOPHY</h2>
+      <section class="about-panel" id="philosophy">
+        <h2 class="section-title">PHILOSOPHY</h2>
+        <div class="philo-section">
+          <h4 class="">Mission</h4>
+          <p>Empower others to do their jobs well and enjoy doing their jobs</p>
+          <h4 class="">Vision</h4>
+          <p><span>Strategic:</span> Form vision, strategy, roadmap and culture</p>  
+          <p><span>Tactical:</span> Improve communication, inspire, encourage, and participate in additive collaboration</p>
+          <h4 class="">Values</h4>
+          <p>Connecting <span>+</span> Strategic <span>+</span> Determined <span>+</span> Collaborative <span>+</span> Empowering</p>
+        </div>
+      </section>
+    </div> <!-- END OF PHILOSOPHY TAB -->
+    <div class="tab-content-item panel narrow-panel" id="skills-tab">
+      <h2 class="section-title">Skills</h2>
+      <section class="about-panel" id="skills">
+        <h2 class="section-title">SKILLS</h2>
+        <div class="skill-box">
+          <span class="skill-pill">Collaborative Leadership</span>
+          <span class="skill-pill">Emotional Intelligence</span>
+          <span class="skill-pill">Extreme Extrovert</span>
+          <span class="skill-pill">Engagement Strategy</span>
+          <span class="skill-pill">Design Thinking Methodology</span>
+          <span class="skill-pill">Strategic Planning</span>
+          <span class="skill-pill">Stakeholder Relationships</span>
+          <span class="skill-pill">Design Thinking Facilitation</span>
+          <span class="skill-pill">Team Building & Development</span>
+          <span class="skill-pill">Communication Skills</span>
+          <span class="skill-pill">Program & Project Management</span>
+          <span class="skill-pill">Cross-Functional T eams</span>
+          <span class="skill-pill">Analytical & Creative Thinking</span>
+          <span class="skill-pill">Diplomacy & Negotiation</span>
+          <span class="skill-pill">UX Engineering</span>
+        </div>
+      </section> <!-- END OF TEACHING TAB -->
+    </div> <!-- END OF SKILLS TAB -->
+  </div> <!-- END OF TAB CONTENT -->
+</section> <!-- END OF ABOUT PAGE -->
 
-<section class="about-panel" id="skills">
-  <h2 class="section-title">SKILLS</h2>
-  <div class="skill-box">
-    <span class="skill-pill">Collaborative Leadership</span>
-    <span class="skill-pill">Emotional Intelligence</span>
-    <span class="skill-pill">Extreme Extrovert</span>
-    <span class="skill-pill">Engagement Strategy</span>
-    <span class="skill-pill">Design Thinking Methodology</span>
-    <span class="skill-pill">Strategic Planning</span>
-    <span class="skill-pill">Stakeholder Relationships</span>
-    <span class="skill-pill">Design Thinking Facilitation</span>
-    <span class="skill-pill">Team Building & Development</span>
-    <span class="skill-pill">Communication Skills</span>
-    <span class="skill-pill">Program & Project Management</span>
-    <span class="skill-pill">Cross-Functional T eams</span>
-    <span class="skill-pill">Analytical & Creative Thinking</span>
-    <span class="skill-pill">Diplomacy & Negotiation</span>
-    <span class="skill-pill">UX Engineering</span>
-  </div>
-</section>
+
+
+
+
+
+
+

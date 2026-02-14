@@ -135,7 +135,7 @@ ul, p, blockquote {
   color: var(--color-accent-coral)
 }
 /* Secondary nav (right) */
-.secondary-nav {
+/* .secondary-nav {
   align-self:start; 
   text-align:right;
   grid-column:1/2;
@@ -155,7 +155,7 @@ ul, p, blockquote {
    color: var(--color-accent-coral);
 }
 
-.secondary-nav .nav-list.right a:hover{color:var(--color-accent-teal)}
+.secondary-nav .nav-list.right a:hover{color:var(--color-accent-teal)} */
 
 /* content column */
 .col-content {
@@ -201,7 +201,7 @@ ul, p, blockquote {
 }
 
 .hero-home {
-  padding-bottom: var(--space-15);
+  padding-bottom: var(--space-1);
 }
 
 .hero-title {
