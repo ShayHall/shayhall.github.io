@@ -20,6 +20,10 @@ function closeModal(){
   // Return focus to the element that opened the modal (if possible, though this is tricky in a full SPA)
 }
 
+
+
+
+
 /* Open modal with URL content (fetch HTML fragment) */
 async function openModal(url){
   if(!modalRoot) return;
@@ -72,7 +76,12 @@ async function openModal(url){
 }
 
 /* Attaches click handler to tiles */
-function setupTiles(){  
+function setupTiles(){
+  // $$('.tile').forEach(tile => {
+  //   const clone = tile.cloneNode(true);
+  //   tile.parentNode.replaceChild(clone, tile);
+  // });
+  
   // Re-select and attach new listeners
   $$('.tile').forEach(tile => {
     tile.addEventListener('click', function(e){
@@ -135,60 +144,41 @@ document.addEventListener('keydown', (e)=>{
 
 
 /* tabs */
-function tabAction() {
-  const id=this.getAttribute("data-id");
-  const active_nav = document.getElementsByClassName("tab-nav-item_active");
-  while (active_nav.length > 0) {
-    active_nav[0].classList.remove("tab-nav-item_active");
-  };
-
-  this.classList.add("tab-nav-item_active");
-  
-  const active_content = document.getElementsByClassName("tab-content-item_active");
-  while (active_content.length > 0) {
-    active_content[0].classList.remove("tab-content-item_active");
-  }
-  document.getElementById(id).classList.add("tab-content-item_active");
-}
-
-if ('navigation' in window) {
-  window.navigation.addEventListener('navigate', (event) => {
-
-    handleLinkClick();
-
-
-  });
-}
-
 const currentPath = window.location.pathname;
 
-function handleLinkClick() {
-
-
+if (currentPath === "/") {
   setTimeout(() => {
 
     function tabNav(){
       const nav_items = document.getElementsByClassName("tab-nav-item");
 
       for(let i=0; i < nav_items.length; i++) {
-        nav_items[i].addEventListener("click", tabAction);
+        nav_items[i].addEventListener("click", function() {
+          const id=this.getAttribute("data-id");
+          const active_nav = document.getElementsByClassName("tab-nav-item_active");
+          while (active_nav.length > 0) {
+            active_nav[0].classList.remove("tab-nav-item_active");
+          };
+
+          this.classList.add("tab-nav-item_active");
+          
+          const active_content = document.getElementsByClassName("tab-content-item_active");
+          while (active_content.length > 0) {
+            active_content[0].classList.remove("tab-content-item_active");
+          }
+          document.getElementById(id).classList.add("tab-content-item_active");
+          
+
+        });// end of click event listener
       } // end of for loop
     };// end of tabNav function
 
+
     tabNav();
   }, 1000); // end of setTimeout
-};
+} //end of if statement looking for homepage
 
-handleLinkClick()
-
-function scrollTo(hash) {
-  if (hash = "/") {
-  location.hash = "#" + hash; // This changes the URL hash and triggers the scroll
-  }
-}
-
-
-
+    
       
         
           

@@ -115,6 +115,7 @@ ul, p, blockquote {
   width:188px;
   z-index:var(--z-nav);
   font-family:var(--font-heading);
+ 
 }
 
 .primary-nav .nav-list {list-style:none;padding:0;margin:0;display:block}
@@ -133,60 +134,25 @@ ul, p, blockquote {
 .photo-link {
   color: var(--color-accent-coral)
 }
-
 /* Secondary nav (right) */
 .secondary-nav {
+  align-self:start; 
+  text-align:right;
+  grid-column:1/2;
   position:fixed;
-  left: 0; 
-  top:250px;
-  padding-left: 16px;
+  right:16px; top:24px;
   width:188px;
-  z-index:var(--z-nav);
-  font-family:var(--font-heading);
 }
-
-
-.secondary-nav .nav-list.right {
-  display: block;
-  cursor: pointer;
-  margin-top:40px;
-  margin-bottom:12px;
+.secondary-nav .nav-list.right {padding:0;margin-top:40px;list-style:none}
+.secondary-nav .nav-list.right li {margin-bottom:12px}
+.secondary-nav .nav-list.right a {
   color:var(--color-text-secondary);
+  text-decoration:none;
   font-size:14px;
   transition: color 0.25s ease;
 }
-
-.secondary-nav .nav-list.right a {
-  color: var(--color-text-secondary);
-  text-decoration: none;
-  font-family: var(--font-body);
-  font-size: 14px;  
-}
-
-/* tabs */
-.tab-content-item {
-  display: none;
-}
-
-.tab-content-item_active {
-  display: block;
-}
-
-.tab-nav-item {
-  padding-bottom: 16px;
-}
-
-.tab-nav-item_active {
+.secondary-nav .nav-list.right a.active {
    color: var(--color-accent-coral);
-   cursor: default
-}
-
-.about-nav-item {
-  color: var(--color-text-secondary);
-  text-decoration: none;
-  font-family: var(--font-body);
-  padding-bottom: 16px;
-
 }
 
 .secondary-nav .nav-list.right a:hover{color:var(--color-accent-teal)}
@@ -235,7 +201,7 @@ ul, p, blockquote {
 }
 
 .hero-home {
-  padding-bottom: var(--space-1);
+  padding-bottom: var(--space-15);
 }
 
 .hero-title {
@@ -382,7 +348,46 @@ ul, p, blockquote {
   background-color: var(--color-text-secondary)
 }
 
+/* tabs */
 
+.tabs {
+
+}
+.tab-nav {
+  display: flex;
+  margin-bottom: var(--space-6);
+}
+
+.tab-nav-item {
+  padding: 1rem;
+  border: 1px solid var(--color-accent-teal);
+  cursor:pointer;
+}
+
+.tab-nav-item:last-child {
+  border-right-color: var(--color-accent-teal);
+}
+
+
+
+.tab-content {
+
+}
+
+.tab-content-item {
+  display: none;
+}
+
+.tab-nav-item_active {
+  background: var(--color-accent-teal);
+  color: var(--color-bg);
+  font-weight: 600;
+  cursor: default;
+}
+
+.tab-content-item_active {
+  display: block;
+}
 
 
 /* timeline */
