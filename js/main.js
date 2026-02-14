@@ -144,7 +144,6 @@ document.addEventListener('keydown', (e)=>{
 
 
 /* tabs */
-/* tabs */
 function tabAction() {
   const id=this.getAttribute("data-id");
   const active_nav = document.getElementsByClassName("tab-nav-item_active");
@@ -170,8 +169,6 @@ if ('navigation' in window) {
 const currentPath = window.location.pathname;
 
 function handleLinkClick() {
-
-
   setTimeout(() => {
 
     function tabNav(){
