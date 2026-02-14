@@ -115,13 +115,31 @@ ul, p, blockquote {
   width:188px;
   z-index:var(--z-nav);
   font-family:var(--font-heading);
- color: var(--color-text-primary);
 }
 
-.primary-nav .nav-list {list-style:none;padding:0;margin:0;display:block}
-.primary-nav .nav-list li {margin-bottom:12px}
+.primary-nav .nav-list {
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:block;
+}
+.primary-nav .nav-list li {
+  margin-bottom:12px;
+}
 
-.primary-nav .nav-list a {color:var(--color-text-primary);text-decoration:none;font-family:var(--font-body);font-size:14px}
+.primary-nav .nav-list a {
+  display: block;
+  color:var(--color-text-primary);
+  text-decoration:none;
+  font-family:var(--font-body);
+  font-size:14px;
+  border-bottom: 1px solid transparent;
+}
+
+.primary-nav .nav-list a:hover {
+  border-bottom: 1px solid var(--color-accent-coral);
+}
+
 .primary-nav .nav-list a:hover, .primary-nav .nav-list a:focus {color:var(--color-accent-teal)}
 
 .nav-logo {
@@ -136,28 +154,6 @@ ul, p, blockquote {
 .photo-link {
   color: var(--color-accent-coral)
 }
-/* Secondary nav (right) */
-/* .secondary-nav {
-  align-self:start; 
-  text-align:right;
-  grid-column:1/2;
-  position:fixed;
-  right:16px; top:24px;
-  width:188px;
-}
-.secondary-nav .nav-list.right {padding:0;margin-top:40px;list-style:none}
-.secondary-nav .nav-list.right li {margin-bottom:12px}
-.secondary-nav .nav-list.right a {
-  color:var(--color-text-secondary);
-  text-decoration:none;
-  font-size:14px;
-  transition: color 0.25s ease;
-}
-.secondary-nav .nav-list.right a.active {
-   color: var(--color-accent-coral);
-}
-
-.secondary-nav .nav-list.right a:hover{color:var(--color-accent-teal)} */
 
 /* content column */
 .col-content {
@@ -166,9 +162,6 @@ ul, p, blockquote {
   grid-template-columns: subgrid; /* inherits the 8 columns */
   padding:0
 }
-/* when using explicit classes above in HTML, kept consistent*/
-
-
 
 /* utility panels */
 .panel {
@@ -213,9 +206,11 @@ ul, p, blockquote {
   margin:0 0 var(--space-1) 0;
   color:var(--color-text-primary);
 }
+
 .hero-title span {
   color: var(--color-accent-coral);
 }
+
 .hero-sub {
   font-family:var(--font-heading);
   color:var(--color-accent-teal);
