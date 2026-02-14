@@ -125,9 +125,11 @@ ul, p, blockquote {
 .primary-nav .nav-list a:hover, .primary-nav .nav-list a:focus {color:var(--color-accent-teal)}
 
 .nav-logo {
-  width: 64px;
+  width: 76px;
   height: auto;
   padding: 12px;
+  margin: -12px;
+  padding-bottom: 24px;
   /* background-image: linear-gradient(-45deg, var(--color-accent-teal), transparent); */
 }
 
