@@ -171,9 +171,7 @@ ul, p, blockquote {
   grid-column: 1 / span 7;
 }
 
-.panel:last-of-type {
-  padding-bottom: 70vh;
-}
+
 
 /* hero */
 .hero {
@@ -324,7 +322,7 @@ ul, p, blockquote {
   display:inline-block;
   padding:10px 16px; 
   margin-right: 8px;
-  text-decoration:none;
+   text-decoration:none;
   font-weight:500;
   transition:all var(--transition-fast) var(--ease-exp);
 }
@@ -701,16 +699,42 @@ p.timeline-time {
     background: red;
     width: 100%;
   }
+  .skill-pill {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .tab-nav-item {
+    border: 1px solid var(--color-mid-gray);
+  }
+
+  .tab-nav-item_active {
+    border: 1px solid var(--color-accent-teal);
+    /* border-bottom: none; */
+  }
+
+.tab-nav {
+  flex-wrap: wrap;
 }
 
+.awards-container {
+  flex-direction: column;
+}
+
+.modal .hero-title {
+  font-size: 36px;
+}
+
+.modal .two-col-grid {
+  display: block;
+}
 
 .section-title {
   color: var(--color-accent-teal);
   font-size: 18px;
   font-weight: 400;
 }
-
-
+}
 
 .philo-section h4 {
   color: var(--color-accent-coral);
