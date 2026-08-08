@@ -1,52 +1,86 @@
-Blog post /blog-posts/post-01.html similar structure to case studies.
+# Shay Hall — Portfolio Site
 
-# Assets & placeholders
+Personal portfolio site for Shay Hall, Senior Design Manager & Product Leader. Showcases case studies, work history, teaching engagements, accolades, and writing.
 
-Place realistic placeholder images in /assets/images/ named:
+**Live site:** https://shayhall.github.io/
 
-hero.jpg
+## Overview
 
-project-1.jpg ... project-6.jpg
+The site is a lightweight, client-rendered single-page app. Navigation between top-level pages (`/`, `/about`, `/case-studies`, `/blog`, `/contact`) is handled via `data-link` attributes intercepted by a client-side router, and individual case studies are loaded into a modal (`#modal-root`) from partial HTML files rather than full page reloads.
 
-project-1-thumb.jpg ... (thumbnails)
+## Pages
 
-gallery-01.jpg ... gallery-12.jpg
+| Page | File | Description |
+|---|---|---|
+| Home | `home.html` | Hero intro, featured project tiles, and tabbed sections for Experience, Teaching, and Accolades |
+| Case Studies | `case-studies.html` | Grid of project tiles that open detailed case studies in a modal |
+| About | `about.html` | Bio, tabbed sections for About Me / Philosophy / Skills |
+| Blog | `blog.html` | Mix of external Medium posts and in-repo long-form posts |
+| Gallery | `gallery.html` | Grid of examples of personal photography projects |
+| Contact | `contact.html` | Email, phone, and LinkedIn contact cards |
 
-favicon.png
-Place resume.pdf in /assets/.
+## Case studies
 
-You can get royalty-free placeholder images from Unsplash and name them accordingly.
+Case study content lives in `pages/case-studies/` as standalone HTML fragments designed to be injected into the modal container:
 
-# Accessibility & performance notes
+- `sevone-saas.html` — SevOne SaaS: Day 1 Experience
+- `lejit.html` — Jumpstart Innovation Team
+- `databand-instana.html` — Databand + Instana Integration Exploration
 
-All interactive tiles are keyboard-focusable and respond to Enter/Space.
+Each fragment follows a consistent structure (`Role`, `Objective`, `Personas`/`Overview`, `Process`, `Summary`) styled by shared classes (`.case-study`, `.two-col-grid`, `.hero-title`, etc.) defined in the site's global stylesheet.
 
-Use loading="lazy" on images to speed loads.
+## Blog posts
 
-Semantic elements: nav, main, header, section, article, aside.
+Long-form posts that live in-repo (rather than linking out to Medium) are stored in `pages/blog-posts/`. Several posts are marked "Coming soon" placeholders pending final content.
 
-Colors meet moderate contrast for headings and white-on-dark; check text contrast for smaller body text against #1c1e26. If any body text is too low contrast, increase weight or color.
+## Project structure
 
-Minify css/styles.css and js/main.js for production. Use compressed images, and generate responsive image sizes if desired.
+```
+shayhall.github.io/
+├── assets/
+│   ├── illustrations/
+│   ├── images/
+│   │   ├── databand-instana_images/
+│   │   ├── lejit_images/
+│   │   ├── saas_images/
+│   │   ├── photo_gallery/
+│   │   ├── agile-design.jpeg
+│   │   ├── learning-square.png
+│   │   ├── shay-workshop-1.jpg
+│   │   ├── shay-workshop-3.jpg
+│   │   ├── shay-workshop-4.jpg
+│   │   └── shay-workshop-5.jpg
+│   ├── favicon.svg
+│   ├── Resume-SHall.pdf
+│   └── SH-logo-1.svg
+├── css/
+├── js/
+│   ├── app.js
+│   └── main.js
+├── pages/
+│   ├── blog-posts/
+│   └── case-studies/
+├── about.html
+├── blog.html
+├── case-studies.html
+├── contact.html
+├── gallery.html
+├── home.html
+├── index.html
+├── 404.html
+├── .gitignore
+└── README.md
+```
 
-# Suggested additional subtle interactions (already included / optional)
 
-Micro-copy reveal on hover (show metrics) — add a data-metric to tiles and reveal on hover.
+## Content notes
 
-Link underline grow animation on hover (use ::after width).
+- Case study fragments are meant to be opened as modals, not viewed as standalone pages — some styling assumes a modal container context.
+- Image alt text and `aria-label` values should stay in sync with visible headings; a few are currently placeholder/legacy values left over from earlier project codenames.
+- The résumé PDF is linked from both the Home and About hero sections (`assets/Resume-SHall.pdf`) — replace this file to update the downloadable résumé sitewide.
 
-Soft background parallax on hero (move background-position on scroll).
 
-Keyboard accessible carousel for gallery modal for left/right arrow navigation.
+## Contact
 
-Small animated SVG underlines for headings.
-
-# How to run & host
-
-Put files with structure above into a repo (e.g., shay-hall-portfolio).
-
-Commit and push to GitHub.
-
-On repo settings, enable GitHub Pages to serve from main branch root (or gh-pages).
-
-Site available at https://<username>.github.io/<repo>/.
+- Email: hallshay@gmail.com
+- LinkedIn: [linkedin.com/in/shay-hall](https://www.linkedin.com/in/shay-hall)
