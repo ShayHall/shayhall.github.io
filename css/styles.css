@@ -287,14 +287,13 @@ ul, p, blockquote {
 
 .project-card h3 {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 
-  /* optional but recommended: keeps height consistent even if a title only takes 1 line */
   line-height: 1.3em;
-  max-height: calc(1.3em * 2);
+  max-height: calc(1.3em * 3);
 }
 
 .project-card .kicker {
