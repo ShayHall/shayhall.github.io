@@ -633,8 +633,11 @@ p.timeline-time {
   background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8));
   z-index:var(--z-modal);
 }
+
 .modal-root.open {display:flex}
+
 .modal {
+  position: relative;
   width: min(1100px, 92vw);
   height:92vh;
   overflow:scroll;
@@ -648,18 +651,27 @@ p.timeline-time {
   opacity:1;
 }
 
+.modal img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 84vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
 .modal-close {
-    position: sticky;
-    left: calc(100vw - 24px);
-    top: 12px;
-    background: transparent;
-    color: var(--color-text-primary);
-    border: none;
-    font-size: 20px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  color: var(--color-text-primary);
+  border: none;
+  font-size: 20px;
 }
 .modal-close:hover {
   color: var(--color-accent-coral);
-  cursor:pointer;
+  cursor: pointer;
 }
 
 /* fade on scroll (will be toggled with JS) */
@@ -851,7 +863,6 @@ p.timeline-time {
   }
 
 
-
   .skill-pill {
     width: 100%;
     margin-bottom: 0;
@@ -906,7 +917,7 @@ p.timeline-time {
   }
 
   .modal-close {
-    left: 100vw;
+    right: 8px;
     top: 8px;
   }
 
