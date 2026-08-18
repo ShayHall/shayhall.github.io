@@ -882,6 +882,19 @@ p.timeline-time {
     display: block;
   }
 
+  .two-col-grid:has(.mobile-reorder-img) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-reorder-text {
+    order: 1;
+  }
+
+  .mobile-reorder-img {
+    order: 2;
+  }
+
   .section-title {
     color: var(--color-accent-teal);
     font-size: 18px;
