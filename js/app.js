@@ -41,7 +41,6 @@ async function router() {
     if (typeof initScrollSpy === 'function') initScrollSpy();
     if (typeof setupTiles === 'function') setupTiles();
     if (typeof setupScrollAnimations === 'function') setupScrollAnimations();
-    if (typeof setupGallery === 'function') setupGallery(); 
 
   } catch (error) {
     console.error("Routing error:", error);

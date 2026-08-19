@@ -75,40 +75,53 @@ async function openModal(url){
   }
 }
 
-/* Open modal with a single image */
-function openImageModal(src, alt){
-  if(!modalRoot) return;
-  modalRoot.classList.add('open');
-  modalRoot.setAttribute('aria-hidden','false');
+/* Attaches click handler to tiles */
+function setupTiles(){
+  // $$('.tile').forEach(tile => {
+  //   const clone = tile.cloneNode(true);
+  //   tile.parentNode.replaceChild(clone, tile);
+  // });
+  
+  // Re-select and attach new listeners
+  $$('.tile').forEach(tile => {
+    tile.addEventListener('click', function(e){
+      // 1. Check for data-case (used for case studies)
+      let url = this.getAttribute('data-case');
+      
+      // 2. Check for data-post (used for blog posts)
+      if(!url) {
+        url = this.getAttribute('data-post');
+      }
+      
+      // If either attribute is present, open the modal
+      if(url){
+        e.preventDefault();
+        openModal(url);
+      } else {
+        // Fallback: if no data-case/data-post, check for an internal link
+        const link = this.querySelector('a');
+        if (link && !link.matches('[data-link]') && !link.getAttribute('target')) {
+             // If it's a regular anchor, do nothing and let the browser handle it.
+        }
+      }
+    });
 
-  const modal = document.createElement('div');
-  modal.className = 'modal';
-  modal.tabIndex = -1;
-
-  const closeBtn = document.createElement('button');
-  closeBtn.className = 'modal-close';
-  closeBtn.innerText = '✕';
-  closeBtn.setAttribute('aria-label', 'Close');
-  closeBtn.addEventListener('click', closeModal);
-
-  const img = document.createElement('img');
-  img.src = src;
-  img.alt = alt || '';
-
-  modal.appendChild(closeBtn);
-  modal.appendChild(img);
-  modalRoot.appendChild(modal);
-  modal.focus();
+    // Handle keyboard interaction (Enter key)
+    tile.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            this.click();
+        }
+    });
+  });
 }
 
-/* Attaches click handler to gallery photo links */
-function setupGallery(){
-  $$('[data-model-image]').forEach(link => {
-    link.addEventListener('click', function(e){
-      e.preventDefault();
-      const img = this.querySelector('img');
-      openImageModal(this.getAttribute('href'), img ? img.alt : '');
-    });
+// Add the modal close behavior to the modal root itself
+if(modalRoot) {
+  modalRoot.addEventListener('click', (e)=>{
+    // Only close if the click is directly on the overlay (modalRoot)
+    if(e.target === modalRoot) {
+      closeModal();
+    }
   });
 }
 
